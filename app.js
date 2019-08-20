@@ -1,4 +1,5 @@
 require('dotenv').config();
+const http = require('http');
 const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
@@ -36,5 +37,10 @@ app.use(cors({
 const index = require('./routes/index');
 
 app.use('/api', index);
+
+const server = http.createServer(app);
+server.listen(process.env.PORT, () => {
+  console.log(`Listening on http://localhost:${process.env.PORT}`);
+});
 
 module.exports = app;
