@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const express = require('express');
 const mongoose = require('mongoose');
 const logger = require('morgan');
+const cors = require('cors');
 
 
 mongoose
@@ -24,8 +25,13 @@ app.use(bodyParser.urlencoded({ extended: false }));
 // default value for title local
 app.locals.title = 'Catwakl - Back-end test';
 
+app.use(cors({
+  credentials: true,
+  origin: ['http://localhost:1234', 'http://localhost:3000', 'http://localhost:8080'],
+}));
+
 const index = require('./routes/index');
 
-app.use('/', index);
+app.use('/api', index);
 
 module.exports = app;
