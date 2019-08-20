@@ -31,7 +31,7 @@ app.locals.title = 'Catwakl - Back-end test';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:1234', 'http://localhost:3000', 'http://localhost:8080'],
+  origin: ['http://localhost:1234', 'http://localhost:3000', 'http://localhost:8080', 'http://localhost:80'],
 }));
 
 const index = require('./routes/index');
