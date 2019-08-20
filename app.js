@@ -31,12 +31,17 @@ app.locals.title = 'Catwakl - Back-end test';
 
 app.use(cors({
   credentials: true,
-  origin: ['http://localhost:1234', 'http://localhost:3000', 'http://localhost:8080', 'http://localhost:80'],
+  origin: ['http://localhost:1234', 'http://localhost:3000', 'http://localhost:8080'],
 }));
 
 const index = require('./routes/index');
 
 app.use('/api', index);
+
+// app.use((req, res) => {
+//   // If no routes match, send them the React HTML.
+//   res.sendFile(path.join(__dirname, '/public/index.html'));
+// });
 
 const server = http.createServer(app);
 server.listen(process.env.PORT, () => {
